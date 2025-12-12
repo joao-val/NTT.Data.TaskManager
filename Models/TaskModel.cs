@@ -1,4 +1,6 @@
-﻿namespace TaskManager.Models
+﻿using System.Text.Json.Serialization;
+
+namespace TaskManager.Models
 {
     public class TaskModel
     {

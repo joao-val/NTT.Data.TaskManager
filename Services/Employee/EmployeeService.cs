@@ -17,7 +17,6 @@ namespace TaskManager.Services.Employee
         public async Task<ResponseModel<List<EmployeeModel>>> CreateEmployee(EmployeeCreationDto employeeCreationDto)
         {
             ResponseModel<List<EmployeeModel>> response = new ResponseModel<List<EmployeeModel>>();
-
             try
             {
                 var employee = new EmployeeModel()
@@ -158,11 +157,11 @@ namespace TaskManager.Services.Employee
             ResponseModel<EmployeeModel> response = new ResponseModel<EmployeeModel>();
             try
             {
-                var task = await _context.Tasks
+                var employee = await _context.Tasks
                     .Include(e => e.Employee)
                     .FirstOrDefaultAsync(taskDatabase => taskDatabase.Id == taskId);
 
-                if (task == null)
+                if (employee == null)
                 {
                     response.Message = "No employees found.";
                     response.Status = false;
@@ -170,7 +169,7 @@ namespace TaskManager.Services.Employee
 
                 }
 
-                response.Data = task.Employee;
+                response.Data = employee.Employee;
                 response.Message = "Employee located.";
                 return response;
             }
