@@ -17,7 +17,7 @@ namespace TaskManager.Controllers
         }
 
         [HttpGet("GetAllEmployees")]
-        public async Task<ActionResult<ResponseModel<List<EmployeeModel>>>> GetAllEmployess()
+        public async Task<ActionResult<ResponseModel<List<EmployeeModel>>>> GetAllEmployees()
         {
             var employees = await _employeeInterface.GetAllEmployees();
             return Ok(employees);
